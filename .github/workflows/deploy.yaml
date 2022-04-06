@@ -18,6 +18,7 @@ jobs:
           node-version: '14'
 
       - run: npm ci
+      - run: npm i jest --global
       - run: jest server/__tests__/friend.test.js
       - run: jest server/__tests__/group.test.js
       - run: jest server/__tests__/model.test.js
