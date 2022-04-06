@@ -1,0 +1,25 @@
+name: testing and deploying application in heroku
+
+on:
+  push:
+   branches:
+    - main
+
+jobs:
+  Testing_the_application:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Installing dependencies
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - run: npm ci
+      - run: jest server/__tests__/app.test.js
+      - run: jest server/__tests__/friend.test.js
+      - run: jest server/__tests__/group.test.js
+      - run: jest server/__tests__/model.test.js
+      - run: jest socket/__tests__/socket.test.js

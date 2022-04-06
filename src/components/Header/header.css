@@ -1,0 +1,21 @@
+.appBar {
+  padding: 0;
+}
+
+.toolbar {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 0;
+  margin: 0;
+  justify-content: space-between;
+}
+
+.menuIcon {
+  margin-right: 20px;
+}
+
+.buttonGroup {
+ display: flex;
+ flex-flow: row nowrap;
+}
