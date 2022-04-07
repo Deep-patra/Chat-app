@@ -46,3 +46,15 @@ jobs:
       - run: jest server/__tests__/group.test.js
       - run: jest server/__tests__/model.test.js
       - run: jest socket/__tests__/socket.test.js
+
+      - name: Deploying to heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ HEROKU_API_KEY }}
+          heroku_app_name: glacial-plains-37669
+          heroku_email: deeppatra1999@gmail.com
+
+        env:
+          MONGODB_URL: ${{ secrets.MONGODB_URL }}
+          PORT: 5000
+          NODE_ENV: ${{ secrets.NODE_ENV }} 
