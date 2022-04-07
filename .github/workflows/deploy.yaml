@@ -23,14 +23,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Installing dependencies
+      - name: Git checkout
+        uses: actions/checkout@v2
+
+      - name: Installing nodejs
         uses: actions/setup-node@v3
         with:
           node-version: '14'
+
+      - name: Starting a mongodb server
+        uses: supercharge/mongodb-github-action@1.7.0
+        with:
+          mongodb-version: '5.0'
+
       - env:
           PORT: ${{ secrets.PORT }}
           MONGODB_URL: ${{ seccrets.MONGODB_URL }}
+        
       - run: npm ci
       - run: npm i jest --global
       - run: jest server/__tests__/friend.test.js
