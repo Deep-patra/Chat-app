@@ -38,7 +38,7 @@ jobs:
 
       - env:
           PORT: ${{ secrets.PORT }}
-          MONGODB_URL: ${{ seccrets.MONGODB_URL }}
+          MONGODB_URL: ${{ secrets.MONGODB_URL }}
         
       - run: npm ci
       - run: npm i jest --global
