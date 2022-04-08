@@ -35,10 +35,6 @@ jobs:
         uses: supercharge/mongodb-github-action@1.7.0
         with:
           mongodb-version: '5.0'
-
-      - env:
-          PORT: ${{ secrets.PORT }}
-          MONGODB_URL: ${{ secrets.MONGODB_URL }}
         
       - run: npm ci
       - run: npm i jest --global
@@ -48,6 +44,9 @@ jobs:
       - run: jest socket/__tests__/socket.test.js
 
       - name: Deploying to heroku
+        env:
+          MONGODB_URL: ${{ secrets.MONGODB_URL }}
+        
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
